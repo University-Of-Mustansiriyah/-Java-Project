@@ -1,0 +1,102 @@
+Index: Restaurant/src/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class App {\r\n    public static void main(String[] args) \r\n    {\r\n      \r\n        new LoginFrame();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Restaurant/src/App.java b/Restaurant/src/App.java
+--- a/Restaurant/src/App.java	(revision 42e16d49879283604208eb1bbbb795a778761cc3)
++++ b/Restaurant/src/App.java	(date 1776418609513)
+@@ -1,7 +1,6 @@
+ public class App {
+     public static void main(String[] args) 
+     {
+-      
+         new LoginFrame();
+     }
+ }
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1776417002863)
++++ b/.idea/.gitignore	(date 1776417002863)
+@@ -0,0 +1,10 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Ignored default folder with query files
++/queries/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
++# Editor-based HTTP Client requests
++/httpRequests/
+Index: Restaurant/src/LoginFrame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import org.w3c.dom.html.HTMLLabelElement;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\n\r\nclass LoginFrame\r\n{\r\n    public  LoginFrame(){\r\n        JFrame f=new JFrame();\r\n        Font font=new Font(\"Arial\",Font.BOLD,25);\r\n        Font font2=new Font(\"Arial\",Font.ITALIC,20);\r\n        JLabel lbltitle=new JLabel(\"LogIn Screen\");\r\n        JLabel lblusername=new JLabel(\"User Name : \");\r\n        JLabel lblpassword=new JLabel(\"Password : \");\r\n        JTextField txtusername=new JTextField();\r\n        JPasswordField txtpassword=new JPasswordField();\r\n        JButton btnLogin=new JButton(\"Log In \");\r\n\r\n\r\n        btnLogin.setFont(font2);\r\n        txtpassword.setFont(font2);\r\n        txtusername.setFont(font2);\r\n        lblpassword.setFont(font2);\r\n        lblusername.setFont(font2);\r\n        lbltitle.setFont(font);\r\n\r\n        btnLogin.setBounds(135,200,120,30);\r\n        lblusername.setBounds(30,85,140,25);\r\n        lblpassword.setBounds(30,130,140,25);\r\n        lbltitle.setBounds(120,30,160,30);\r\n        txtusername.setBounds(150,85,150,30);\r\n        txtpassword.setBounds(150,130,150,30);\r\n\r\n        lbltitle.setForeground(Color.RED);\r\n\r\n        f.add(btnLogin);\r\n        f.add(txtusername);\r\n        f.add(txtpassword);\r\n        f.add(lblpassword);\r\n        f.add(lblusername);\r\n        f.add(lbltitle);\r\n\r\n        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);\r\n        f.setSize(400,400);\r\n        f.setTitle(\"Login Frame\");\r\n        f.setLocationRelativeTo(null);\r\n        f.setLayout(null);\r\n        f.setVisible(true);\r\n\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Restaurant/src/LoginFrame.java b/Restaurant/src/LoginFrame.java
+--- a/Restaurant/src/LoginFrame.java	(revision 42e16d49879283604208eb1bbbb795a778761cc3)
++++ b/Restaurant/src/LoginFrame.java	(date 1776418483134)
+@@ -2,6 +2,8 @@
+ 
+ import javax.swing.*;
+ import java.awt.*;
++import java.awt.event.ActionEvent;
++import java.awt.event.ActionListener;
+ 
+ class LoginFrame
+ {
+@@ -15,8 +17,9 @@
+         JTextField txtusername=new JTextField();
+         JPasswordField txtpassword=new JPasswordField();
+         JButton btnLogin=new JButton("Log In ");
++        JButton btnNote=new JButton("Dont Have An Account ?");
+ 
+-
++        btnNote.setFont(font2);
+         btnLogin.setFont(font2);
+         txtpassword.setFont(font2);
+         txtusername.setFont(font2);
+@@ -24,6 +27,7 @@
+         lblusername.setFont(font2);
+         lbltitle.setFont(font);
+ 
++        btnNote.setBounds(20,300,350,30);
+         btnLogin.setBounds(135,200,120,30);
+         lblusername.setBounds(30,85,140,25);
+         lblpassword.setBounds(30,130,140,25);
+@@ -31,8 +35,10 @@
+         txtusername.setBounds(150,85,150,30);
+         txtpassword.setBounds(150,130,150,30);
+ 
++        btnNote.setForeground(Color.RED);
+         lbltitle.setForeground(Color.RED);
+ 
++        f.add(btnNote);
+         f.add(btnLogin);
+         f.add(txtusername);
+         f.add(txtpassword);
+@@ -40,6 +46,14 @@
+         f.add(lblusername);
+         f.add(lbltitle);
+ 
++        btnNote.addActionListener(new ActionListener() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++                f.setVisible(false);
++                new Sign_inFrame();
++            }
++        });
++
+         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+         f.setSize(400,400);
+         f.setTitle("Login Frame");

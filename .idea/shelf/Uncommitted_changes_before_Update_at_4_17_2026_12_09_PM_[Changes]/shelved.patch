@@ -1,0 +1,42 @@
+Index: Restaurant/src/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class App {\r\n    public static void main(String[] args) \r\n    {\r\n        System.out.println(\"Hello, World!\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Restaurant/src/App.java b/Restaurant/src/App.java
+--- a/Restaurant/src/App.java	(revision fc14a2e42e36780ee18d5644714a531e53f1482a)
++++ b/Restaurant/src/App.java	(date 1776415539032)
+@@ -1,6 +1,10 @@
++import javax.swing.*;
++
+ public class App {
+     public static void main(String[] args) 
+     {
+-        System.out.println("Hello, World!");
++
++       LoginFrame frame=new LoginFrame();
++
+     }
+ }
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1776411684611)
++++ b/.idea/.gitignore	(date 1776411684611)
+@@ -0,0 +1,10 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Ignored default folder with query files
++/queries/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
++# Editor-based HTTP Client requests
++/httpRequests/
