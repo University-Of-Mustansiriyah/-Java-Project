@@ -3,143 +3,149 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomeFrame
-{
-    int sidebarWidth=250,isOpened=250;
+public class HomeFrame {
+
+    int sidebarWidth = 250, isOpened = 250;
     Timer timer;
-    boolean isclose=true;
-    public  HomeFrame() {
+    boolean isclose = true;
+
+    CardLayout cardLayout = new CardLayout();
+    JPanel mainPanel = new JPanel(cardLayout);
+
+    public HomeFrame() {
 
         JFrame f = new JFrame("Home Frame");
         Font font = new Font("Arial", Font.BOLD, 25);
+        f.setForeground(Color.WHITE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setLayout(null);
 
-        JPanel sideBar=new JPanel();
+        // ================= PAGES =================
+        JPanel homePanel = new JPanel();
+        homePanel.add(new JLabel("Dashboard"));
+
+        StaffPanal staffPanel = new StaffPanal();
+
+        mainPanel.setBounds(250, 0, 1300, 1000);
+        mainPanel.add(homePanel, "home");
+        mainPanel.add(staffPanel, "staff");
+
+        f.add(mainPanel);
+
+        // ================= SIDEBAR =================
+        JPanel sideBar = new JPanel();
         sideBar.setLayout(null);
-        sideBar.setBackground(new Color(40,60,80));
-        sideBar.setBounds(0,0,250,1000);
+        sideBar.setBackground(new Color(40, 60, 80));
+        sideBar.setBounds(0, 0, 250, 1000);
 
-        ImageIcon imagemenu = new ImageIcon(
-                getClass().getResource("/Images/Menu.png"));
+        Font font2 = new Font("Arial", Font.BOLD, 25);
+
+        // ===== MENU =====
+        ImageIcon imagemenu = new ImageIcon(getClass().getResource("/Images/Menu.png"));
         Image imgmenu = imagemenu.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        ImageIcon smallIconmenu = new ImageIcon(imgmenu);
-        JButton btnMenu=new JButton(" Menu",smallIconmenu);
-        btnMenu.setBounds(10,10,230,40);
-        btnMenu.setFocusPainted(false);
-        btnMenu.setFont(font);
+        JButton btnMenu = new JButton(" Menu", new ImageIcon(imgmenu));
+        btnMenu.setBounds(10, 10, 230, 40);
+        btnMenu.setFont(font2);
         btnMenu.setHorizontalAlignment(SwingConstants.LEFT);
-        btnMenu.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnMenu.setVerticalTextPosition(SwingConstants.CENTER);
-        btnMenu.setIconTextGap(10);
         sideBar.add(btnMenu);
 
-        JSeparator line=new JSeparator();
-        line.setBounds(0,60,250,7);
+        JSeparator line = new JSeparator();
+        line.setBounds(0, 60, 250, 7);
         sideBar.add(line);
 
-        ImageIcon imagefood=new ImageIcon(
-                getClass().getResource("/Images/Food.png"));
-        Image imgfood=imagefood.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
-        ImageIcon foodsmall=new ImageIcon(imgfood);
-        JButton btnMenuManagement=new JButton(" Food",foodsmall);
-        btnMenuManagement.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnMenuManagement.setVerticalTextPosition(SwingConstants.CENTER);
+        // ===== FOOD =====
+        ImageIcon imagefood = new ImageIcon(getClass().getResource("/Images/Food.png"));
+        Image imgfood = imagefood.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        JButton btnMenuManagement = new JButton(" Food", new ImageIcon(imgfood));
+        btnMenuManagement.setBounds(10, 90, 230, 60);
+        btnMenuManagement.setFont(font2);
         btnMenuManagement.setHorizontalAlignment(SwingConstants.LEFT);
-        btnMenuManagement.setIconTextGap(10);
-        btnMenuManagement.setBounds(10,90,230,60);
-        btnMenuManagement.setFont(font);
         sideBar.add(btnMenuManagement);
 
-        ImageIcon imageDashboard = new ImageIcon(
-                getClass().getResource("/Images/Dashboard.png"));
-        Image img = imageDashboard.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        ImageIcon smallIcon = new ImageIcon(img);
-        JButton btnDashBoard = new JButton(" Dashboard", smallIcon);
-        btnDashBoard.setBounds(10,190,230,60);
-        btnDashBoard.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnDashBoard.setVerticalTextPosition(SwingConstants.CENTER);
-        btnDashBoard.setFont(font);
+        // ===== DASHBOARD =====
+        ImageIcon imageDashboard = new ImageIcon(getClass().getResource("/Images/Dashboard.png"));
+        Image imgdash = imageDashboard.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        JButton btnDashBoard = new JButton(" Dashboard", new ImageIcon(imgdash));
+        btnDashBoard.setBounds(10, 190, 230, 60);
+        btnDashBoard.setFont(font2);
         btnDashBoard.setHorizontalAlignment(SwingConstants.LEFT);
-        btnDashBoard.setIconTextGap(10);
         sideBar.add(btnDashBoard);
 
-        ImageIcon imageorder=new ImageIcon(
-                getClass().getResource("/Images/Orders.png"));
-        Image imgorder=imageorder.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
-        ImageIcon ordersmall=new ImageIcon(imgorder);
-        JButton btnOrders=new JButton(" Orders",ordersmall);
-        btnOrders.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnOrders.setVerticalTextPosition(SwingConstants.CENTER);
+        // ===== ORDERS =====
+        ImageIcon imageorder = new ImageIcon(getClass().getResource("/Images/Orders.png"));
+        Image imgorder = imageorder.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        JButton btnOrders = new JButton(" Orders", new ImageIcon(imgorder));
+        btnOrders.setBounds(10, 290, 230, 60);
+        btnOrders.setFont(font2);
         btnOrders.setHorizontalAlignment(SwingConstants.LEFT);
-        btnOrders.setIconTextGap(10);
-        btnOrders.setBounds(10,290,230,60);
-        btnOrders.setFont(font);
         sideBar.add(btnOrders);
 
-        ImageIcon imagetables=new ImageIcon(
-                getClass().getResource("/Images/Table.png"));
-        Image imgtable=imagetables.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
-        ImageIcon tablesmall=new ImageIcon(imgtable);
-        JButton btntables=new JButton(" Tables",tablesmall);
-        btnDashBoard.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnDashBoard.setVerticalTextPosition(SwingConstants.CENTER);
-        btntables.setHorizontalAlignment(SwingConstants.LEFT);
-        btntables.setIconTextGap(10);
-        btntables.setBounds(10,390,230,60);
-        btntables.setFont(font);
-        sideBar.add(btntables);
+        // ===== TABLES =====
+        ImageIcon imagetable = new ImageIcon(getClass().getResource("/Images/Table.png"));
+        Image imgtable = imagetable.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        JButton btnTables = new JButton(" Tables", new ImageIcon(imgtable));
+        btnTables.setBounds(10, 390, 230, 60);
+        btnTables.setFont(font2);
+        btnTables.setHorizontalAlignment(SwingConstants.LEFT);
+        sideBar.add(btnTables);
 
-
-        ImageIcon imagestaff = new ImageIcon(
-                getClass().getResource("/Images/Staff.png"));
+        // ===== STAFF =====
+        ImageIcon imagestaff = new ImageIcon(getClass().getResource("/Images/Staff.png"));
         Image imgst = imagestaff.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        ImageIcon smallIconstaff = new ImageIcon(imgst);
-        JButton btnStaff = new JButton(" Staff", smallIconstaff);
-        btnDashBoard.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnDashBoard.setVerticalTextPosition(SwingConstants.CENTER);
+        JButton btnStaff = new JButton(" Staff", new ImageIcon(imgst));
+        btnStaff.setBounds(10, 490, 230, 60);
+        btnStaff.setFont(font2);
         btnStaff.setHorizontalAlignment(SwingConstants.LEFT);
-        btnStaff.setIconTextGap(10);
-        btnStaff.setBounds(10,490,230,60);
-        btnStaff.setFont(font);
         sideBar.add(btnStaff);
 
-
-        ImageIcon imagelogout = new ImageIcon(
-                getClass().getResource("/Images/Logout.png"));
+        // ===== LOGOUT =====
+        ImageIcon imagelogout = new ImageIcon(getClass().getResource("/Images/Logout.png"));
         Image imglogout = imagelogout.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        ImageIcon smallIconlogout = new ImageIcon(imglogout);
-        JButton btnLogout = new JButton(" Logout", smallIconlogout);
-        btnDashBoard.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnDashBoard.setVerticalTextPosition(SwingConstants.CENTER);
-        btnLogout.setHorizontalAlignment(SwingConstants.LEFT);
-        btnLogout.setIconTextGap(10);
+        JButton btnLogout = new JButton(" Logout", new ImageIcon(imglogout));
         btnLogout.setBounds(10, 760, 230, 60);
-        btnLogout.setFont(font);
+        btnLogout.setFont(font2);
+        btnLogout.setHorizontalAlignment(SwingConstants.LEFT);
         sideBar.add(btnLogout);
 
-        btnLogout.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int result =JOptionPane.showConfirmDialog(f, "Are You Sure to Log Out?",
-                 "Confirm", JOptionPane.OK_CANCEL_OPTION
-                );
+        f.add(sideBar);
 
-                if (result == JOptionPane.OK_OPTION) {
-                    f.setVisible(false);
-                    new LoginFrame();
-                }
+        // ================= ACTIONS =================
+
+        btnDashBoard.addActionListener(e -> cardLayout.show(mainPanel, "home"));
+
+        btnStaff.addActionListener(e -> cardLayout.show(mainPanel, "staff"));
+
+        btnOrders.addActionListener(e -> JOptionPane.showMessageDialog(f, "Orders not ready"));
+
+        btnTables.addActionListener(e -> JOptionPane.showMessageDialog(f, "Tables not ready"));
+
+        btnMenuManagement.addActionListener(e -> JOptionPane.showMessageDialog(f, "Food not ready"));
+
+        btnLogout.addActionListener(e -> {
+            int result = JOptionPane.showConfirmDialog(
+                    f,
+                    "Are You Sure to Log Out?",
+                    "Confirm",
+                    JOptionPane.OK_CANCEL_OPTION
+            );
+
+            if (result == JOptionPane.OK_OPTION) {
+                f.setVisible(false);
+                new LoginFrame();
             }
         });
-        timer= new Timer(5, e -> {
-            if(isclose){
-                isOpened-=10;
-                if(isOpened<=90){
-                    isOpened=90;
-                    isclose=false;
+
+        // ================= MENU ANIMATION =================
+        timer = new Timer(5, e -> {
+            if (isclose) {
+                isOpened -= 10;
+                if (isOpened <= 90) {
+                    isOpened = 90;
+                    isclose = false;
                     timer.stop();
                 }
-            }else {
+            } else {
                 isOpened += 10;
                 if (isOpened >= 250) {
                     isOpened = 250;
@@ -147,22 +153,18 @@ public class HomeFrame
                     timer.stop();
                 }
             }
-            sideBar.setSize(isOpened,1000);
+            sideBar.setSize(isOpened, 1000);
         });
 
         btnMenu.addActionListener(e -> {
-
-            if(!timer.isRunning()){
-                timer.start();
-            }
+            if (!timer.isRunning()) timer.start();
         });
 
-        f.add(sideBar);
         f.setResizable(false);
-        f.setLayout(null);
         f.setVisible(true);
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         new HomeFrame();
     }
 }
