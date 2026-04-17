@@ -1,0 +1,108 @@
+Index: Restaurant/src/HomeFrame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\n\r\npublic class HomeFrame {\r\n\r\n    int sidebarWidth = 250, isOpened = 250;\r\n    Timer timer;\r\n    boolean isclose = true;\r\n\r\n    CardLayout cardLayout = new CardLayout();\r\n    JPanel mainPanel = new JPanel(cardLayout);\r\n\r\n    public HomeFrame() {\r\n\r\n        JFrame f = new JFrame(\"Home Frame\");\r\n        Font font = new Font(\"Arial\", Font.BOLD, 25);\r\n        f.setForeground(Color.WHITE);\r\n        f.setExtendedState(JFrame.MAXIMIZED_BOTH);\r\n        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n        f.setLayout(null);\r\n\r\n        // ================= PAGES =================\r\n        JPanel homePanel = new JPanel();\r\n        homePanel.add(new JLabel(\"Dashboard\"));\r\n\r\n        StaffPanal staffPanel = new StaffPanal();\r\n\r\n        mainPanel.setBounds(250, 0, 1300, 1000);\r\n        mainPanel.add(homePanel, \"home\");\r\n        mainPanel.add(staffPanel, \"staff\");\r\n\r\n        f.add(mainPanel);\r\n\r\n        // ================= SIDEBAR =================\r\n        JPanel sideBar = new JPanel();\r\n        sideBar.setLayout(null);\r\n        sideBar.setBackground(new Color(40, 60, 80));\r\n        sideBar.setBounds(0, 0, 250, 1000);\r\n\r\n        Font font2 = new Font(\"Arial\", Font.BOLD, 25);\r\n\r\n        // ===== MENU =====\r\n        ImageIcon imagemenu = new ImageIcon(getClass().getResource(\"/Images/Menu.png\"));\r\n        Image imgmenu = imagemenu.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);\r\n        JButton btnMenu = new JButton(\" Menu\", new ImageIcon(imgmenu));\r\n        btnMenu.setBounds(10, 10, 230, 40);\r\n        btnMenu.setFont(font2);\r\n        btnMenu.setHorizontalAlignment(SwingConstants.LEFT);\r\n        sideBar.add(btnMenu);\r\n\r\n        JSeparator line = new JSeparator();\r\n        line.setBounds(0, 60, 250, 7);\r\n        sideBar.add(line);\r\n\r\n        // ===== FOOD =====\r\n        ImageIcon imagefood = new ImageIcon(getClass().getResource(\"/Images/Food.png\"));\r\n        Image imgfood = imagefood.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);\r\n        JButton btnMenuManagement = new JButton(\" Food\", new ImageIcon(imgfood));\r\n        btnMenuManagement.setBounds(10, 90, 230, 60);\r\n        btnMenuManagement.setFont(font2);\r\n        btnMenuManagement.setHorizontalAlignment(SwingConstants.LEFT);\r\n        sideBar.add(btnMenuManagement);\r\n\r\n        // ===== DASHBOARD =====\r\n        ImageIcon imageDashboard = new ImageIcon(getClass().getResource(\"/Images/Dashboard.png\"));\r\n        Image imgdash = imageDashboard.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);\r\n        JButton btnDashBoard = new JButton(\" Dashboard\", new ImageIcon(imgdash));\r\n        btnDashBoard.setBounds(10, 190, 230, 60);\r\n        btnDashBoard.setFont(font2);\r\n        btnDashBoard.setHorizontalAlignment(SwingConstants.LEFT);\r\n        sideBar.add(btnDashBoard);\r\n\r\n        // ===== ORDERS =====\r\n        ImageIcon imageorder = new ImageIcon(getClass().getResource(\"/Images/Orders.png\"));\r\n        Image imgorder = imageorder.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);\r\n        JButton btnOrders = new JButton(\" Orders\", new ImageIcon(imgorder));\r\n        btnOrders.setBounds(10, 290, 230, 60);\r\n        btnOrders.setFont(font2);\r\n        btnOrders.setHorizontalAlignment(SwingConstants.LEFT);\r\n        sideBar.add(btnOrders);\r\n\r\n        // ===== TABLES =====\r\n        ImageIcon imagetable = new ImageIcon(getClass().getResource(\"/Images/Table.png\"));\r\n        Image imgtable = imagetable.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);\r\n        JButton btnTables = new JButton(\" Tables\", new ImageIcon(imgtable));\r\n        btnTables.setBounds(10, 390, 230, 60);\r\n        btnTables.setFont(font2);\r\n        btnTables.setHorizontalAlignment(SwingConstants.LEFT);\r\n        sideBar.add(btnTables);\r\n\r\n        // ===== STAFF =====\r\n        ImageIcon imagestaff = new ImageIcon(getClass().getResource(\"/Images/Staff.png\"));\r\n        Image imgst = imagestaff.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);\r\n        JButton btnStaff = new JButton(\" Staff\", new ImageIcon(imgst));\r\n        btnStaff.setBounds(10, 490, 230, 60);\r\n        btnStaff.setFont(font2);\r\n        btnStaff.setHorizontalAlignment(SwingConstants.LEFT);\r\n        sideBar.add(btnStaff);\r\n\r\n        // ===== LOGOUT =====\r\n        ImageIcon imagelogout = new ImageIcon(getClass().getResource(\"/Images/Logout.png\"));\r\n        Image imglogout = imagelogout.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);\r\n        JButton btnLogout = new JButton(\" Logout\", new ImageIcon(imglogout));\r\n        btnLogout.setBounds(10, 760, 230, 60);\r\n        btnLogout.setFont(font2);\r\n        btnLogout.setHorizontalAlignment(SwingConstants.LEFT);\r\n        sideBar.add(btnLogout);\r\n\r\n        f.add(sideBar);\r\n\r\n        // ================= ACTIONS =================\r\n\r\n        btnDashBoard.addActionListener(e -> cardLayout.show(mainPanel, \"home\"));\r\n\r\n        btnStaff.addActionListener(e -> cardLayout.show(mainPanel, \"staff\"));\r\n\r\n        btnOrders.addActionListener(e -> JOptionPane.showMessageDialog(f, \"Orders not ready\"));\r\n\r\n        btnTables.addActionListener(e -> JOptionPane.showMessageDialog(f, \"Tables not ready\"));\r\n\r\n        btnMenuManagement.addActionListener(e -> JOptionPane.showMessageDialog(f, \"Food not ready\"));\r\n\r\n        btnLogout.addActionListener(e -> {\r\n            int result = JOptionPane.showConfirmDialog(\r\n                    f,\r\n                    \"Are You Sure to Log Out?\",\r\n                    \"Confirm\",\r\n                    JOptionPane.OK_CANCEL_OPTION\r\n            );\r\n\r\n            if (result == JOptionPane.OK_OPTION) {\r\n                f.setVisible(false);\r\n                new LoginFrame();\r\n            }\r\n        });\r\n\r\n        // ================= MENU ANIMATION =================\r\n        timer = new Timer(5, e -> {\r\n            if (isclose) {\r\n                isOpened -= 10;\r\n                if (isOpened <= 90) {\r\n                    isOpened = 90;\r\n                    isclose = false;\r\n                    timer.stop();\r\n                }\r\n            } else {\r\n                isOpened += 10;\r\n                if (isOpened >= 250) {\r\n                    isOpened = 250;\r\n                    isclose = true;\r\n                    timer.stop();\r\n                }\r\n            }\r\n            sideBar.setSize(isOpened, 1000);\r\n        });\r\n\r\n        btnMenu.addActionListener(e -> {\r\n            if (!timer.isRunning()) timer.start();\r\n        });\r\n\r\n        f.setResizable(false);\r\n        f.setVisible(true);\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        new HomeFrame();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Restaurant/src/HomeFrame.java b/Restaurant/src/HomeFrame.java
+--- a/Restaurant/src/HomeFrame.java	(revision 8db165b93d987f2e790bc9691de29e2f970f0bc3)
++++ b/Restaurant/src/HomeFrame.java	(date 1776439701045)
+@@ -44,7 +44,7 @@
+         // ===== MENU =====
+         ImageIcon imagemenu = new ImageIcon(getClass().getResource("/Images/Menu.png"));
+         Image imgmenu = imagemenu.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+-        JButton btnMenu = new JButton(" Menu", new ImageIcon(imgmenu));
++        JButton btnMenu = new JButton("  Menu", new ImageIcon(imgmenu));
+         btnMenu.setBounds(10, 10, 230, 40);
+         btnMenu.setFont(font2);
+         btnMenu.setHorizontalAlignment(SwingConstants.LEFT);
+@@ -57,7 +57,7 @@
+         // ===== FOOD =====
+         ImageIcon imagefood = new ImageIcon(getClass().getResource("/Images/Food.png"));
+         Image imgfood = imagefood.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+-        JButton btnMenuManagement = new JButton(" Food", new ImageIcon(imgfood));
++        JButton btnMenuManagement = new JButton("  Food", new ImageIcon(imgfood));
+         btnMenuManagement.setBounds(10, 90, 230, 60);
+         btnMenuManagement.setFont(font2);
+         btnMenuManagement.setHorizontalAlignment(SwingConstants.LEFT);
+@@ -66,7 +66,7 @@
+         // ===== DASHBOARD =====
+         ImageIcon imageDashboard = new ImageIcon(getClass().getResource("/Images/Dashboard.png"));
+         Image imgdash = imageDashboard.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+-        JButton btnDashBoard = new JButton(" Dashboard", new ImageIcon(imgdash));
++        JButton btnDashBoard = new JButton("  Dashboard", new ImageIcon(imgdash));
+         btnDashBoard.setBounds(10, 190, 230, 60);
+         btnDashBoard.setFont(font2);
+         btnDashBoard.setHorizontalAlignment(SwingConstants.LEFT);
+@@ -75,7 +75,7 @@
+         // ===== ORDERS =====
+         ImageIcon imageorder = new ImageIcon(getClass().getResource("/Images/Orders.png"));
+         Image imgorder = imageorder.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+-        JButton btnOrders = new JButton(" Orders", new ImageIcon(imgorder));
++        JButton btnOrders = new JButton("  Orders", new ImageIcon(imgorder));
+         btnOrders.setBounds(10, 290, 230, 60);
+         btnOrders.setFont(font2);
+         btnOrders.setHorizontalAlignment(SwingConstants.LEFT);
+@@ -84,7 +84,7 @@
+         // ===== TABLES =====
+         ImageIcon imagetable = new ImageIcon(getClass().getResource("/Images/Table.png"));
+         Image imgtable = imagetable.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+-        JButton btnTables = new JButton(" Tables", new ImageIcon(imgtable));
++        JButton btnTables = new JButton("  Tables", new ImageIcon(imgtable));
+         btnTables.setBounds(10, 390, 230, 60);
+         btnTables.setFont(font2);
+         btnTables.setHorizontalAlignment(SwingConstants.LEFT);
+@@ -93,7 +93,7 @@
+         // ===== STAFF =====
+         ImageIcon imagestaff = new ImageIcon(getClass().getResource("/Images/Staff.png"));
+         Image imgst = imagestaff.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+-        JButton btnStaff = new JButton(" Staff", new ImageIcon(imgst));
++        JButton btnStaff = new JButton("  Staff", new ImageIcon(imgst));
+         btnStaff.setBounds(10, 490, 230, 60);
+         btnStaff.setFont(font2);
+         btnStaff.setHorizontalAlignment(SwingConstants.LEFT);
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"3c1dcafe-f6ee-47d4-bf51-c181b16e6080\" name=\"Changes\" comment=\"Home Frame\">\r\n      <change afterPath=\"$PROJECT_DIR$/Restaurant/src/Staff.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/Restaurant/src/StaffPanal.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Restaurant/src/App.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Restaurant/src/App.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Restaurant/src/HomeFrame.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Restaurant/src/HomeFrame.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/-Java-Project/App.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/-Java-Project/App.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;RahmanMhd&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/University-Of-Mustansiriyah/-Java-Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;2aa4bacb-75b3-4cad-acec-01c4d69cd576&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"3CTZm6ANyRmwGBGQkuTD7sf6ntQ\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.App.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.HomeFrame.executor&quot;: &quot;Run&quot;,\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/rahma/JavaHomework/BankSwing/-Java-Project&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"HomeFrame\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"HomeFrame\" />\r\n      <module name=\"-Java-Project\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.HomeFrame\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"3c1dcafe-f6ee-47d4-bf51-c181b16e6080\" name=\"Changes\" comment=\"\" />\r\n      <created>1776411676296</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1776411676296</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Home Frame\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1776430960362</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1776430960362</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Home Frame\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Home Frame\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 8db165b93d987f2e790bc9691de29e2f970f0bc3)
++++ b/.idea/workspace.xml	(date 1776441268481)
+@@ -2,12 +2,11 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="3c1dcafe-f6ee-47d4-bf51-c181b16e6080" name="Changes" comment="Home Frame">
+-      <change afterPath="$PROJECT_DIR$/Restaurant/src/Staff.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Restaurant/src/StaffPanal.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/Restaurant/src/Table.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/Restaurant/src/TablesPanel.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Restaurant/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/App.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/Restaurant/src/HomeFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/HomeFrame.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/-Java-Project/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/-Java-Project/App.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/-Java-Project/HomeFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/-Java-Project/HomeFrame.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+Index: Restaurant/src/TablesPanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Restaurant/src/TablesPanel.java b/Restaurant/src/TablesPanel.java
+new file mode 100644
+--- /dev/null	(date 1776441498951)
++++ b/Restaurant/src/TablesPanel.java	(date 1776441498951)
+@@ -0,0 +1,8 @@
++import javax.swing.*;
++import java.awt.*;
++import java.util.ArrayList;
++
++public class TablesPanel extends JPanel
++{
++ 
++}
