@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c1dcafe-f6ee-47d4-bf51-c181b16e6080" name="Changes" comment="Home Frame">
-      <change afterPath="$PROJECT_DIR$/Restaurant/src/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Restaurant/src/OrderPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Restaurant/src/TablesPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Restaurant/src/HomeFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/HomeFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant/src/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/-Java-Project/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/-Java-Project/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant/src/OrderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/OrderPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/-Java-Project/HomeFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/-Java-Project/HomeFrame.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

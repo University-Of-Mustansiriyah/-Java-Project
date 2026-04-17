@@ -23,17 +23,15 @@ public class HomeFrame {
 
         JPanel homePanel = new JPanel();
         homePanel.add(new JLabel("Dashboard"));
-
         StaffPanal staffPanel = new StaffPanal();
-
         TablesPanel tablesPanel = new TablesPanel();
+        OrderPanel orderPanel=new OrderPanel();
 
         mainPanel.setBounds(250, 0, 1300, 1000);
         mainPanel.add(homePanel, "home");
         mainPanel.add(staffPanel, "staff");
-
         mainPanel.add(tablesPanel, "tables");
-
+        mainPanel.add(orderPanel,"Orders");
         f.add(mainPanel);
 
         JPanel sideBar = new JPanel();
@@ -111,7 +109,7 @@ public class HomeFrame {
 
         btnTables.addActionListener(e -> cardLayout.show(mainPanel, "tables"));
 
-        btnOrders.addActionListener(e -> JOptionPane.showMessageDialog(f, "Orders not ready"));
+        btnOrders.addActionListener(e -> cardLayout.show(mainPanel,"Orders"));
 
         btnMenuManagement.addActionListener(e -> JOptionPane.showMessageDialog(f, "Food not ready"));
 
