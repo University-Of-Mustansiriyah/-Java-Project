@@ -22,16 +22,20 @@ public class HomeFrame {
         f.setLayout(null);
 
         JPanel homePanel = new JPanel();
-        homePanel.add(new JLabel("Dashboard"));
         StaffPanal staffPanel = new StaffPanal();
         TablesPanel tablesPanel = new TablesPanel();
         OrderPanel orderPanel=new OrderPanel();
-
+        FoodPanel foodPanel = new FoodPanel();
+        foodPanel.setOrderPanel(orderPanel);
+        foodPanel.setTablesPanel(tablesPanel);
+        orderPanel.setTablesPanel(tablesPanel);
+        mainPanel.add(foodPanel, "food");
         mainPanel.setBounds(250, 0, 1300, 1000);
         mainPanel.add(homePanel, "home");
         mainPanel.add(staffPanel, "staff");
         mainPanel.add(tablesPanel, "tables");
         mainPanel.add(orderPanel,"Orders");
+
         f.add(mainPanel);
 
         JPanel sideBar = new JPanel();
@@ -61,18 +65,10 @@ public class HomeFrame {
         btnMenuManagement.setHorizontalAlignment(SwingConstants.LEFT);
         sideBar.add(btnMenuManagement);
 
-        ImageIcon imageDashboard = new ImageIcon(getClass().getResource("/Images/Dashboard.png"));
-        Image imgdash = imageDashboard.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        JButton btnDashBoard = new JButton("  Dashboard", new ImageIcon(imgdash));
-        btnDashBoard.setBounds(10, 190, 230, 60);
-        btnDashBoard.setFont(font2);
-        btnDashBoard.setHorizontalAlignment(SwingConstants.LEFT);
-        sideBar.add(btnDashBoard);
-
         ImageIcon imageorder = new ImageIcon(getClass().getResource("/Images/Orders.png"));
         Image imgorder = imageorder.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         JButton btnOrders = new JButton("  Orders", new ImageIcon(imgorder));
-        btnOrders.setBounds(10, 290, 230, 60);
+        btnOrders.setBounds(10, 200, 230, 60);
         btnOrders.setFont(font2);
         btnOrders.setHorizontalAlignment(SwingConstants.LEFT);
         sideBar.add(btnOrders);
@@ -80,7 +76,7 @@ public class HomeFrame {
         ImageIcon imagetable = new ImageIcon(getClass().getResource("/Images/Table.png"));
         Image imgtable = imagetable.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         JButton btnTables = new JButton("  Tables", new ImageIcon(imgtable));
-        btnTables.setBounds(10, 390, 230, 60);
+        btnTables.setBounds(10, 300, 230, 60);
         btnTables.setFont(font2);
         btnTables.setHorizontalAlignment(SwingConstants.LEFT);
         sideBar.add(btnTables);
@@ -88,7 +84,7 @@ public class HomeFrame {
         ImageIcon imagestaff = new ImageIcon(getClass().getResource("/Images/Staff.png"));
         Image imgst = imagestaff.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         JButton btnStaff = new JButton("  Staff", new ImageIcon(imgst));
-        btnStaff.setBounds(10, 490, 230, 60);
+        btnStaff.setBounds(10, 400, 230, 60);
         btnStaff.setFont(font2);
         btnStaff.setHorizontalAlignment(SwingConstants.LEFT);
         sideBar.add(btnStaff);
@@ -103,7 +99,6 @@ public class HomeFrame {
 
         f.add(sideBar);
 
-        btnDashBoard.addActionListener(e -> cardLayout.show(mainPanel, "home"));
 
         btnStaff.addActionListener(e -> cardLayout.show(mainPanel, "staff"));
 
@@ -111,8 +106,9 @@ public class HomeFrame {
 
         btnOrders.addActionListener(e -> cardLayout.show(mainPanel,"Orders"));
 
-        btnMenuManagement.addActionListener(e -> JOptionPane.showMessageDialog(f, "Food not ready"));
-
+        btnMenuManagement.addActionListener(e ->
+                cardLayout.show(mainPanel, "food")
+        );
         btnLogout.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(
                     f,

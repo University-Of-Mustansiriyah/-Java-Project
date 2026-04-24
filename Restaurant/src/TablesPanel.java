@@ -2,9 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+class TableManager {
+    public static ArrayList<Table> tables = new ArrayList<>();
+}
 public class TablesPanel extends JPanel
 {
-    ArrayList<Table>tables=new ArrayList<>();
+    ArrayList<Table>tables=TableManager.tables;
     ArrayList<JButton> buttons=new ArrayList<>();
     public TablesPanel() {
         setLayout(null);
@@ -16,11 +19,13 @@ public class TablesPanel extends JPanel
         lbltitle.setForeground(Color.RED);
         add(lbltitle);
 
-        for (int i = 1; i <= 12; i++) {
-            if (i == 1 || i == 4 || i == 7) {
-                tables.add(new Table(i, 2));
-            } else {
-                tables.add(new Table(i, 4));
+        if (tables.isEmpty()) {
+            for (int i = 1; i <= 12; i++) {
+                if (i == 1 || i == 4 || i == 7) {
+                    tables.add(new Table(i, 2));
+                } else {
+                    tables.add(new Table(i, 4));
+                }
             }
         }
         int x = 150, y = 150;
@@ -72,5 +77,18 @@ public class TablesPanel extends JPanel
         }
         btn.setOpaque(true);
         btn.setBorderPainted(false);
+    }
+    public void updateTableStatus(int tableNum, String status) {
+        for (int i = 0; i < tables.size(); i++) {
+            Table t = tables.get(i);
+
+            if (t.getNum() == tableNum) {
+                t.setStatus(status);
+
+                JButton btn = buttons.get(i);
+                updateButton(btn, t);
+                break;
+            }
+        }
     }
 }

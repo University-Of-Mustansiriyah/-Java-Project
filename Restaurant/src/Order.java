@@ -1,34 +1,41 @@
 import java.util.ArrayList;
 
-public class Order
-{
-    private  int tablenum;
-    private String  status;
-    private ArrayList<String>items;
+public class Order {
+
+    private int tablenum;
+    private String status;
+    private ArrayList<OrderItem> items;
     private double total;
-    public Order(int totalnum){
-        this.tablenum =totalnum;
-        this.status="pending";
-        this.items=new ArrayList<>();
-        this.total=0;
+
+    public Order(int tablenum) {
+        this.tablenum = tablenum;
+        this.status = "pending";
+        this.items = new ArrayList<>();
+        this.total = 0;
     }
-    public  int getTableNum(){
+
+    public int getTableNum() {
         return tablenum;
     }
-    public  String getStatus(){
-        return  status;
+
+    public String getStatus() {
+        return status;
     }
-    public void setStatus(String  status){
-        this.status=status;
+
+    public void setStatus(String status) {
+        this.status = status;
     }
-    public ArrayList<String>getItems(){
+
+    public ArrayList<OrderItem> getItems() {
         return items;
     }
-    public double getTotal(){
+
+    public double getTotal() {
         return total;
     }
-    public void addItem(String item,double price){
+    public void addItem(String name, int qty, double price) {
+        OrderItem item = new OrderItem(name, qty, price);
         items.add(item);
-        total+=price;
+        total += item.getTotal();
     }
 }

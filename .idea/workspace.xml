@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c1dcafe-f6ee-47d4-bf51-c181b16e6080" name="Changes" comment="Home Frame">
+    <list default="true" id="3c1dcafe-f6ee-47d4-bf51-c181b16e6080" name="Changes" comment="OrdersPanal">
+      <change afterPath="$PROJECT_DIR$/Restaurant/src/Food.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Restaurant/src/FoodPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Restaurant/src/HomeFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/HomeFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Restaurant/src/OrderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/OrderPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant/src/TablesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant/src/TablesPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/-Java-Project/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/-Java-Project/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/-Java-Project/HomeFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/-Java-Project/HomeFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/-Java-Project/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/-Java-Project/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/-Java-Project/OrderPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/-Java-Project/OrderPanel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +62,14 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/rahma/JavaHomework/BankSwing/-Java-Project&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HomeFrame">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="-Java-Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HomeFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HomeFrame" />
       <module name="-Java-Project" />
@@ -65,6 +80,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HomeFrame" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -96,6 +112,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Home Frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Home Frame" />
+    <MESSAGE value="OrdersPanal" />
+    <option name="LAST_COMMIT_MESSAGE" value="OrdersPanal" />
   </component>
 </project>
