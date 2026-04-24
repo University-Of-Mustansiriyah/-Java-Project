@@ -148,7 +148,7 @@ public class OrderPanel extends JPanel {
         }
 
         text += "\n---------------------\n";
-        text += "TOTAL: " + o.getTotal();
+        text += "TOTAL Price: " + o.getTotal();
 
         details.setText(text);
     }

@@ -52,7 +52,30 @@ public class Sign_inFrame
         f.add(lblpassword);
         f.add(lblusername);
         f.add(lbltitle);
+        btnSignIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                String fullName = txtFullname.getText().trim();
+                String username = txtusername.getText().trim();
+                String password = new String(txtpassword.getPassword()).trim();
+                if (fullName.isEmpty() || username.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(f, "Please fill all fields!");
+                    return;
+                }
+                for (Staff s : StaffPanal.staffList) {
+                    if (s.getUsername().equals(username)) {
+                        JOptionPane.showMessageDialog(f, "Username already exists!");
+                        return;
+                    }
+                }
+                Staff newStaff = new Staff(username, password, fullName, "Cashier", "Male");
+                StaffPanal.staffList.add(newStaff);
+                JOptionPane.showMessageDialog(f, "Account created successfully!");
+                f.dispose();
+                new LoginFrame();
+            }
+        });
         btnNote.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

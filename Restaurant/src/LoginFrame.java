@@ -39,6 +39,33 @@ class LoginFrame
         txtusername.setBounds(150, 85, 150, 30);
         txtpassword.setBounds(150, 130, 150, 30);
 
+        btnLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String username = txtusername.getText().trim();
+                String password = new String(txtpassword.getPassword()).trim();
+                if (username.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(f, "Fill all fields!");
+                    return;
+                }
+                boolean found = false;
+                for (Staff s : StaffPanal.staffList) {
+                    if (s.getUsername().equals(username) &&
+                            s.getPassword().equals(password)) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) {
+                    f.dispose();
+                    new HomeFrame();
+                } else {
+                    JOptionPane.showMessageDialog(f, "Wrong Username or Password!");
+                }
+            }
+        });
+
         lbltitle.setForeground(Color.RED);
 
         f.add(btnLogin);

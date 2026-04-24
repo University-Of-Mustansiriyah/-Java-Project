@@ -122,7 +122,21 @@ public class FoodPanel extends JPanel {
 
             if (result == JOptionPane.OK_OPTION) {
 
-                int qty = Integer.parseInt(qtyField.getText());
+                int qty;
+
+                try {
+                    qty = Integer.parseInt(qtyField.getText());
+
+                    if (qty <= 0) {
+                        JOptionPane.showMessageDialog(this, "Quantity must be greater than 0!");
+                        return;
+                    }
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Please enter a valid number!");
+                    return;
+                }
+
                 String type = (String) typeBox.getSelectedItem();
 
                 int table = -1;
@@ -134,20 +148,12 @@ public class FoodPanel extends JPanel {
                         tablesPanel.updateTableStatus(table, "Busy");
                     }
                 }
-                boolean isNewOrder = true;
-                for (Order o : OrderManager.orders) {
-                    if (o.getTableNum() == table && o.getStatus().equals("pending")) {
-                        isNewOrder = false;
-                        break;
-                    }
-                }
 
                 Order order = findOrCreateOrder(table);
                 order.addItem(food.getName(), qty, food.getPrice());
-                if (isNewOrder && tablesPanel != null && table != 0) {
-                    tablesPanel.updateTableStatus(table, "Busy");
-                    orderPanel.refresh();
 
+                if (orderPanel != null) {
+                    orderPanel.refresh();
                 }
 
                 JOptionPane.showMessageDialog(this, "Item Added Successfully!");

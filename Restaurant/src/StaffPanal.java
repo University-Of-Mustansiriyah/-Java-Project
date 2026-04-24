@@ -6,13 +6,14 @@ public class StaffPanal extends JPanel
 {
     JTable table;
     DefaultTableModel model;
-    ArrayList<Staff> staffList = new ArrayList<>();
+    public static ArrayList<Staff> staffList = new ArrayList<>();
+    static {
+        staffList.add(new Staff("Ra31Ma", "Ra1234", "Rahman MHD", "Chef", "Male"));
+        staffList.add(new Staff("Al15lA", "Al8356", "Ali", "Manager", "Male"));
+        staffList.add(new Staff("Sf83fS", "Sa1983", "Sara", "Cashier", "Female"));
+    }
     public StaffPanal() {
         setLayout(null);
-
-        staffList.add(new Staff("R1", "Ra1234", "Rahman MHD", "Chef", "Male"));
-        staffList.add(new Staff("A1", "Al8356", "Ali", "Manager", "Male"));
-        staffList.add(new Staff("S1", "Sa1983", "Sara", "Cashier", "Female"));
         String[] columns = {"Username", "Password", "Full Name", "Role", "Gender"};
         model = new DefaultTableModel(columns, 0);
         table = new JTable(model);
